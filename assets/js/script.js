@@ -15,18 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('background-video');
     var audio = document.getElementById('background-audio');
 
-    // Mute the video
+    // Mute the video initially
     video.muted = true;
 
-    // Play the video with audio muted to ensure playback on iOS
-    video.play().then(function() {
-        // Pause the video immediately to avoid unwanted playback
-        video.pause();
-        // Unmute the audio for further playback
-        video.muted = false;
-    }).catch(function(error) {
-        console.error('Video playback failed:', error);
-    });
+    function playVideo() {
+        video.play().then(function() {
+            // If video playback succeeds, unmute the video
+            video.muted = false;
+        }).catch(function(error) {
+            // Log any errors to the console
+            console.error('Video playback failed:', error);
+        });
+    }
+
+    // Play the video when user interacts with the document
+    document.addEventListener('click', playVideo, { once: true }); // Ensure this event listener only runs once
+    document.addEventListener('touchstart', playVideo, { once: true }); // For touch devices
+    document.addEventListener('scroll', playVideo, { once: true }); // For scrolling
 });
+
 
 
