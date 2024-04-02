@@ -15,24 +15,31 @@ document.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('background-video');
     var audio = document.getElementById('background-audio');
 
-    // Mute the video initially
+    // Mute the video
     video.muted = true;
 
-    function playVideo() {
-        video.play().then(function() {
-            // If video playback succeeds, unmute the video
-            video.muted = false;
-        }).catch(function(error) {
-            // Log any errors to the console
-            console.error('Video playback failed:', error);
-        });
-    }
+    // Play the video and loop it
+    video.play().then(function() {
+        // Se o vídeo for reproduzido com sucesso, defina o loop para verdadeiro
+        video.loop = true;
+    }).catch(function(error) {
+        // Log any errors to the console
+        console.error('Video playback failed:', error);
+    });
 
-    // Play the video when user interacts with the document
-    document.addEventListener('click', playVideo, { once: true }); // Ensure this event listener only runs once
-    document.addEventListener('touchstart', playVideo, { once: true }); // For touch devices
-    document.addEventListener('scroll', playVideo, { once: true }); // For scrolling
+    // Disable video interaction
+    video.addEventListener('click', function(e) {
+        e.preventDefault();
+    });
+
+    video.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    video.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable dragging
+    video.draggable = false;
 });
-
-
-
