@@ -43,3 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Disable dragging
     video.draggable = false;
 });
+
+
+
+
+
