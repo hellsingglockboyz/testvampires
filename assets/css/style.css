@@ -1,0 +1,134 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; 
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(8px); 
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    margin-top: 20vh; /* Ajuste na margem superior */
+}
+
+.logo-container {
+    margin-top: calc(25vh - 240px); /* Ajuste na margem superior */
+}
+
+.links-container {
+    margin-top: 20px;
+}
+
+.links-container a {
+    margin: 0 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    text-shadow: 0 0 5px black; 
+}
+
+.links-container a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    width: 800px; 
+    animation: flicker 3s infinite alternate;
+}
+
+
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0); 
+    }
+    25% {
+        opacity: 0.7;
+        transform: translate(5px, 5px); 
+    }
+    50% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    75% {
+        opacity: 0.9;
+        transform: translate(-5px, -5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        width: 80%;
+        max-width: 300px; 
+    }
+
+    .logo-container {
+        margin-top: calc(50vh - 120px); 
+    }
+
+    .links-container {
+        margin-top: 20px;
+        text-align: center; 
+    }
+
+    .links-container a {
+        margin: 0 15px; 
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        text-shadow: 0 0 5px black; 
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        filter: blur(12px);
+    }
+}
