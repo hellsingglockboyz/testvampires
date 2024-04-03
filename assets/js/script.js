@@ -10,11 +10,9 @@ document.querySelector('.logo').addEventListener('contextmenu', function(e) {
 // Desabilita a função de arrastar e soltar na logo
 document.querySelector('.logo').draggable = false;
 
-
 document.addEventListener('DOMContentLoaded', function() {
     var video = document.getElementById('background-video');
-    var audio = document.getElementById('background-audio');
-
+    
     // Mute the video
     video.muted = true;
 
@@ -43,8 +41,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Disable dragging
     video.draggable = false;
 });
-
-
-
-
-
