@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var iframe = document.createElement('iframe');
   iframe.style.border = '0';
   iframe.style.width = '350px';
-  iframe.style.height = '786px';
+  iframe.style.height = '588px';
   iframe.style.position = 'absolute'; // Alterado para absolute
   iframe.style.top = '50%';
   iframe.style.left = '50%';
   iframe.style.transform = 'translate(-50%, -50%)';
-  iframe.src = 'https://bandcamp.com/EmbeddedPlayer/album=1175760154/size=large/bgcol=333333/linkcol=ffffff/transparent=true/';
+  iframe.src = 'https://bandcamp.com/EmbeddedPlayer/album=860489528/size=large/bgcol=ffffff/linkcol=333333/transparent=true/';
   
   // Adiciona uma classe ao iframe para aplicar a transição CSS
   iframe.classList.add('bandcamp-iframe');
@@ -29,6 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mostra o iframe com uma animação suave
   showBandcampIframe();
+
+  // Adiciona um event listener para detectar cliques em qualquer parte da página
+  document.addEventListener('click', function(event) {
+    // Verifica se o clique não foi dentro do elemento de incorporação do Bandcamp
+    if (!event.target.closest('.bandcamp-iframe')) {
+      // Se não foi dentro do iframe do Bandcamp, inicie o vídeo em loop
+      video.play();
+    }
+  });
 });
 
 // Função para mostrar o iframe com uma animação suave
